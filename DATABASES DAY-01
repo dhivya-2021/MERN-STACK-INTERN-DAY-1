@@ -1,0 +1,73 @@
+CREATE TABLE Students(
+id INT,
+name VARCHAR(50),
+age INT,
+major VARCHAR(50)
+);
+INSERT INTO Students(ID,NAME,AGE,MAJOR)
+VALUES(1,'AKSHARA','19','CSE'),
+(2,'SINDHU','31','IT'),
+(3,'RAKSHI','21','EEE'),
+(4,'SWETHA','16','CSBS'),
+(5,'ASHIKA','19','CCE'),
+(6,'ASHWINI','23','CSE'),
+(7,'LILLY','24','ECE'),
+(8,'INDRA','20','MECH'),
+(9,'PRIYA','21','AI-DS'),
+(10,'DHIVYA','27','CSE');
+ SELECT * FROM Students;
+ALTER TABLE Students ADD column email varchar(100);
+UPDATE Students SET email='aksharashriv6@gmail.com' where id=1;
+select * from Students;
+UPDATE Students SET email='sindhu@gmail.com' where id=2;
+UPDATE Students SET email='rakshi@gmail.com' where id=3;
+UPDATE Students SET email='swetha@gmail.com' where id=4;
+UPDATE Students SET email='ashika@gmail.com' where id=5;
+UPDATE Students SET email='ashwini@gmail.com' where id=6;
+UPDATE Students SET email='lilly@gmail.com' where id=7;
+UPDATE Students SET email='indra@gmail.com' where id=8;
+UPDATE Students SET email='priya@gmail.com' where id=9;
+UPDATE Students SET email='dhivya@gmail.com' where id=10;
+select * from Students;
+
+DELETE FROM Students where id=4;
+select * from Students;
+SELECT * FROM Students WHERE id between 1 and 3;
+select * from Students;
+-- TASK 1
+SELECT * FROM Students WHERE name IN ('SINDHU','RAKSHI');
+select * FROM Students;
+SELECT * FROM Students ORDER BY AGE DESC;
+SELECT * FROM Students ORDER BY AGE ASC;
+-- TASK 2
+SELECT COUNT(MAJOR) from Students where MAJOR='CSE';
+-- TASK 3
+SELECT SUM(ID) from Students;
+-- TASK 4
+SELECT avg (AGE) from Students;
+-- TASK 5 
+CREATE TABLE mysqL(
+roll_no INT,
+city VARCHAR(50),
+ID int
+);
+INSERT INTO mysqL(roll_no,city,ID)
+VALUES(9,'CHENNAI',1),
+(4,'MADURAI',2),
+(7,'DINDIGUL',3),
+(3,'ERODE',4),
+(5,'GUDALUR',5),
+(2,'OOTY',6),
+(6,'COONOR',7),
+(8,'PALAKKAD',8),
+(10,'THRISSUR',9),
+(1,'SALEM',10);
+SELECT * FROM mysqL;
+-- INNER JOIN
+SELECT mysqL.city,Students.AGE,Students.name FROM mysqL INNER JOIN Students ON Students.ID = mysqL.ID;
+-- LEFT JOIN
+SELECT mysqL.city,Students.AGE,Students.name FROM mysqL LEFT JOIN Students ON Students.ID = mysqL.ID;
+-- RIGHT JOIN
+SELECT mysqL.city,Students.AGE,Students.name FROM mysqL RIGHT JOIN Students ON Students.ID = mysqL.ID;
+-- OUTER JOIN
+SELECT mysqL.city,Students.AGE,Students.name FROM mysqL LEFT JOIN Students ON Students.ID = mysqL.ID UNION SELECT mysqL.city,Students.AGE,Students.name FROM mysqL RIGHT JOIN Students ON Students.ID = mysqL.ID;
