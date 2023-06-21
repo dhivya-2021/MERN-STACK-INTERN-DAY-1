@@ -1,0 +1,196 @@
+let num1=170;
+let num2=20;
+console.log("addition of two numbers"+num1+"and"+num2+ "=" ,num1+num2);
+console.log(`additon of two numbers ${num1} and ${num2} is ${num1+num2}`);
+// undefined-not defined
+let xtr
+console.log(xtr);
+// null= empty
+let ctr =null
+console.log(ctr);
+console.log(sece);
+var sece='college';
+//hosting
+//console.log(xxtr);
+//let xxtr='college';
+//oject type
+const user={
+    name : 'dhivya',
+    age: 13,
+    phonenumber: 9443378121,
+    email : 'dhivya2021@gmail.com'
+
+};
+console.log(user);
+//upadte the value
+user.phonenumber=3456789
+//adding the additional attribute
+user.college='sece'
+console.log(user);
+//priniting the particular attribute
+console.log(user.age);
+//delete a particular attribut in the object
+delete user.age
+console.log(user);
+//not allowed to edit the object->freze
+const us= Object.freeze({
+    name : 'dhivya',
+    age: 13,
+    phonenumber: 9443378121,
+    email : 'dhivya2021@gmail.com'
+
+});
+us.school='sece'
+console.log(us);
+//printing only the keys in an object
+console.log(Object.keys(user));
+//printing only the values in a object
+console.log(Object.values(user));
+//mutation
+const x={
+    name:'anu',
+    age:14,
+};
+const y= x;
+//const y={...x};//spread operator(takes the copy of the object and assign)
+
+y.age=30;
+console.log(x,y);
+//another way
+const a={
+    name:'akshu',
+    age:90
+};
+const b={
+    ...a,
+    email:'akshu@gmail.com'
+};
+console.log(a,b);
+//task
+const details={
+   address:{
+    street:'second street',
+    city:'coimbatore'
+   }
+   //city:'coimabatore',(error)
+};
+console.log(details.address.city);
+console.log(details.name);
+//optional chaining
+console.log(details.address?.city);
+//function 
+//function getAmount(total,taxpercent){
+    //return 0
+//}
+function sum(num1,num2){
+    return num1+num2
+}
+console.log(sum(10,90));
+//task
+function sum1(n1,n2){
+    if(typeof(n1) || typeof(n2)==Number){
+        return 'invalid number'
+    }
+       return n1+n2
+}
+console.log(sum1('tye',80));
+//arrow fun
+const summ=(num1,num2)=> num1+num2;
+console.log(summ(2,5));
+//arrow fun with return
+const arr=(num1,num2)=>{
+    return num1+num2
+};
+console.log(arr(5,5));
+//iife fun(immediately invoke function Expression)
+(function sum2(num1,num2){
+  console.log(num1+num2);
+})(10,20);
+//function inside another function
+const sum3=(num1,num2)=> num1+num2;
+const calculator=(num1,num2,operation)=>{ //higher order function(pass a function into function or return a function from the function)
+    console.log(operation(num1,num2));
+}
+calculator(20,20,sum3);
+//calculators
+const sum4=(num1,num2)=>num1+num2;//call back function(when one function call another function an a function is passed as a parameter)
+const sub=(num1,num2)=>num1-num2;
+const multiply=(num1,num2)=>num1*num2;
+const divide=(num1,num2)=>num1/num2;
+const cal=(num1,num2,operation)=>{
+    console.log(operation(num1,num2));
+}
+cal(10,20,multiply)
+cal(10,20 ,sub)
+//STRINGS FUNCTIONS
+let str="  Im studying in sece   ";
+console.log(str.trim());
+//ARRAYS
+let arr1=[
+    1,         //number0
+    undefined,
+    true,
+    null,
+    '123',
+    "4",
+    6.25,
+    [1,2,3,4,5],
+    (num1)=>num1*5,
+    {a:1,b:2,c:3,say_hello:()=>"hello"}//object 8
+];
+console.log(arr1[7]);
+console.log (arr1[8](5));
+console.log(arr1[9].a);
+console.log(arr1[9].b);
+console.log(arr1[9].c);
+console.log(arr1[9].say_hello());
+for(key in arr[7]){
+    console.log(key,arr1[7][key]);
+}
+let arr2=[1,2,3,4,5];
+console.log(arr2.shift());//remove  the element at the first
+console.log(arr2.unshift(2,3));//add the elemnt at first
+console.log(arr2);
+
+//SLICE(non destructive)(start index,end index)
+let names=["tharun","ashwin","kani","akilan"];
+let names_sliced = names.slice(1,4);
+console.log(names,names_sliced);
+//SPLICE(destruct pannum)//(start,delete count,arugments)
+console.log(names.splice(2,2,1,2,3));
+console.log(names);
+//task
+let namees=["tharun","ashwin","kani","akilan"];
+console.log(namees.splice(4,0,"balasuriya","harish"));
+console.log(namees)
+//slice task
+let b1="harish";
+let b1_sliced=b1.slice(1,6);
+console.log(b1_sliced);
+console.log(b1.slice(1, b1.length));
+//split() vs join()
+let str2="Sri Eshwar College";
+let str3=str2.split(" ");
+let str4=str2.split("");
+let str5=str2.split("r");
+console.log(str3);
+console.log(str4);
+console.log(str5);
+//JOINS
+console.log(str5.join());
+//TASK
+str6=[1,2,34,"sri","eshwar","College"];
+console.log(typeof str6.join(''));
+//charAt()
+str4="dhivyaaa";
+console.log(str4.charAt(5));
+//touppercase and tolowercase
+console.log(str4.toUpperCase());
+console.log(str4.toLowerCase());
+//TASK
+let namess="madhu akshaya priya ishwariya saranya";
+let str7=namess.split(" ");
+for(key in str7){
+    str7[key]=str7[key].charAt(0).toUpperCase()+str7[key].slice(1);
+}
+console.log( str7.join(" "));
