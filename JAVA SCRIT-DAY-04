@@ -1,0 +1,215 @@
+// palindrome task
+let str="madam";
+let pal=str.split('');
+pal.reverse();
+if(str==pal.join('')){
+    console.log("true");
+}
+else{
+    console.log("False");
+}
+//FOR IN LOOP(for objects)
+let obj={
+    a:1,
+    b:2,
+    c:3,
+    d:4,
+}
+for(i in obj){
+    console.log(obj[i]);
+}
+//FOR OF LOOP(for Arrays)
+let arr=[1,3,5,6];
+for(let val of arr){
+    console.log(arr);
+}
+//ARRAY CALL BACK FUNCTIONS
+let sece_names=['alan','ishu','vijay','dhivya'];
+sece_names.forEach((ele)=>{
+    console.log(ele.repeat(3));
+})
+let numm_arr=[1,5,8,9,4];
+numm_arr.forEach(ele=>{
+    console.log(ele*ele);//FOR EACH
+})
+//(without brackets the arrow function get executed onlu one arguments is possible for more one arugments  brackets are complusory)
+//MAP()
+let arr1=sece_names.map(ele=>{
+    return ele.repeat(2)}
+);
+console.log(arr1);
+//ARROW FUNCTION SINGLE STATEMENT RETURN STATEMENT IS OPTIONAL
+let arr2=sece_names.map(ele => ele.repeat(3));
+console.log(arr2);
+//FILTER //return in true or false manner filter the particular requiremnts(evaluate true or false)
+let ans=numm_arr.filter(ele=>{
+   // return ele%2;//odd condition
+    return !(ele%2);//even condition
+   // return 100; //except falscy value if we enter  any values it return the entire array as it is
+})//0 means false 1 means true
+console.log(ans);//null,undefined,false,0,empty string are fasle value in js
+//TASK-02
+let names_obj=[
+    {
+        name:"maheesan",
+        dob:2002
+    },
+    {
+        name:"ajay",
+        dob:2003
+    },
+    {
+        name:"bala",
+        dob:2004
+    },
+    {
+        name:"surya",
+        dob:2004
+    }
+];
+let names=names_obj.filter(ele=> ele.dob>=2003).map(ele=> ele.name);;
+console.log(names);
+//SHALLOW COPY
+const arr3=[1,2,3,5,7];//we do not change the reference we only change the value
+const arr5=arr3
+arr3[4]=900;
+console.log(arr3);
+
+const arr6=[1,2,3,5,7];
+const arr7=[... arr6];//spread operator is used to copy the elemnts from one array to another
+arr6[4]=900;
+console.log(arr6);
+//DEEP COPY
+const obj_cp={
+    name:'sece',
+    yaer:2023,
+}
+const obj_cp2={...obj_cp};//deep copy
+obj_cp2.year=2024;
+console.log(obj_cp,obj_cp2);
+//Example-02(override of field)[if  same attributes are there then it gets overides over the previous one is called  deep copy]
+const obj_cp3={
+    name:'Sece',
+    year:2023,
+    name:'Sri Eshwar',
+};
+console.log(obj_cp3);
+//TASK
+let emp=[
+{
+    name:'ishu',
+    age:23,
+    salary:26000,
+    number: 9765356789
+},
+{
+    name:'akshu',
+    age:56,
+    salary:23000,
+    number:345567865443
+},
+{
+    name:'dhanush',
+    age:26,
+    salary:28000,
+    number:2345667898865,
+},
+{
+    name:'dhivya',
+    age:34,
+    salary:34000,
+    number:8963451709
+},
+{
+    name:'sara',
+    age:19,
+    salary:13000,
+    number:45784267898,
+}];
+let emp_res=emp.filter(ele => ele.salary>=25000).map(ele=>{
+    return {name:ele.name,age:ele.age};
+});
+console.log(emp_res);
+
+
+//De-structuring--> unpacking the data
+let arr1_num=[10,20,30,40,50,60,70,80];
+let [a,b,c,d,e]= arr1_num;
+console.log(a,b,c,d,e);//remaining elements will be packed onlyy
+//REST OPERATOR
+//let [a1, b1, c1, d1, ...e1]=arr1_num;
+let [a2, b2,  ,c2, d2,e2]=arr1_num;
+console.log(a2,b2,c2,d2,e2);
+//TASK//rest element should be in last onlyy
+let arr2_num=[10,20,30,40,50,60,70,80,90,100];
+let[a3,b3, ,c3,d3,...e3]=arr2_num;
+console.log(a3,b3,c3,d3,e3);
+
+
+//OBJECT DESTRUCTUTING OBJECT ELEMNTS:
+let obj_1={
+    clgname:"sece",
+    year:2024,
+    city:'cbe',
+};
+let{clgname,year,city}= obj_1 
+console.log(clgname,year,city);
+
+let obj_2={
+    clgname1:"sece",
+    year1:2024,
+    city1:'cbe',
+    dept:'cse',
+    course:'os',
+    
+};
+//let{clgname1,year1,city1,...rest}=obj_2;
+let{clgname1:college1,year1,city1,...rest}=obj_2;
+console.log(college1,year1,city1,rest);//rechange the attribute anme we should give change attribute name only(rename operator is use change the attribute name)
+
+//when their is not field is not in the object and the user needs it as default we sue=operator
+let obj_3={
+    clgname2:"sece",
+    year2:2024,
+    city2:'cbe',
+    dept:'cse',
+    course:'os',
+    color:'blue',
+};
+let{clgname2:college2,year2,city2,color='green'}=obj_3;
+console.log(college2,year2,city2,color);
+//TASK for particular second the output will get display
+setTimeout(()=> console.log('dhivya'),3000)//asynchoronus call
+//Every three second the string must be printed
+setInterval(()=> console.log('dhivya'),3000)
+//TIMEOUT
+console.log("hello")
+setTimeout(()=> console.log('hello'),0)
+console.log('ishu');
+
+//promise->states(pending,resolve,reject) API CALL ILLUSTRATION
+const abc=fetch('https://jsonplaceholder.typicode.com/todos') //fetch returns a promise
+abc.then((resolve)=>console.log(resolve.json())); //without json it gives a readable stream format which can only be read by the computer.
+
+const promise_x= new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+        reject('resolve')
+    },4000)
+})
+promise_x
+.then((value)=> console.log(value))
+.catch(()=> console.log('error'));
+
+
+
+//async ans await
+const apicall= async() =>{
+    try{
+    const promise_from_api=await fetch('https://jsonplaceholder.typicode.com/todos');
+    const data=await promise_from_api.json();
+    console.log(data);
+    }catch(error){
+        console.log(error)
+    }
+}
+apicall();
