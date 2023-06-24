@@ -1,0 +1,147 @@
+// console.log('hello world');
+// const addition =(n1,n2)=>{
+//     const  sum=(n1+n2);
+//     console.log(sum);
+// };
+// function sub(num1,num2){
+//     return(num1-num2);
+// }
+// function multiply(num1,num2){
+//     return (num1*num2);
+// }
+// function div(num1,num2){
+//     return (num1/num2);
+// }
+// let num1= parseInt(process.argv[2]);//getting lines from command line
+// let num2= parseInt(process.argv[3]);
+// // addition(num1,num2);
+// // console.log(sub(num1,num2));
+// // console.log(multiply(num1,num2));
+// // console.log(div(num1,num2));
+// // switch case
+// // let operation=(process.argv[4]);
+// // switch(operation){
+// //     case '+':
+// //         console.log(num1+num2);
+// //         break;
+// //     case '-':
+// //         console.log(num1-num2);
+// //         break;  
+// //     case '*':
+// //         console.log(num1*num2);
+// //         break;
+// //     case '/':
+// //         console.log(num1/num2);
+// //         break;        
+// // };
+// //Export  functions
+// module.exports={addition,sub,multiply,div};
+// //https://roadmap.sh/node.js(complete mind map for the node js)
+//read file
+//BLOCKING-for orderly executing the statements
+ const fs= require('fs');
+// fs.readFile(`${__dirname}/states1.txt`,(err,data)=>{
+//        if(err){
+//         console.log("Error☝️");
+//        }
+//        else{
+//         console.log(data.toString());
+//        }
+// })
+
+// const namee='dhivya';
+// //console.log(`Hello ${namee}! How are you`);
+// console.log(__dirname);//to get the path of the file
+
+// //write file
+// const { Console } = require('console');
+// const fs= require('fs');
+// const inputData='divs divs divs divs';
+// fs.writeFile(`${__dirname}/file1.txt`,inputData ,(err)=>{
+//   if(err){
+//     console.log("Error while writing");
+//   }
+//   else{
+//     console.log("Done write function");
+//   }
+// })
+
+
+
+//READ
+function read(filepath){
+    return new Promise((resolve,reject) => {
+        fs.readFile(filepath,(err,data)=>{
+            if(err){
+                reject("Failed during read");
+            }
+            else{
+                resolve(data.toString());
+            }
+        })
+    })
+}
+//WRITE
+function write(filepath,input){
+    return new Promise((resolve, reject) => {
+        fs.writeFile(filepath,input,(err)=>{
+            if(err){
+                reject("Failed during write");
+            }
+            else {
+                resolve("done raa");
+            }
+        })
+    })
+}
+
+// read(`${__dirname}/states.txt`).then((data)=>{
+//     console.log(data.toString());
+//     const x=data.toString()+"\n 10.Telengana"
+//     return write(`${__dirname}/test.txt`,x).then((data)=>{
+//         console.log(data);
+//     }).catch((err)=>{
+//         console.log(err);
+//     })
+// })
+//many then blocks but only one catch block
+
+
+const fileOpertaion= async() =>{
+ try{
+    const states = await read(`${__dirname}/states.txt`);
+
+    //console.log(states.toString());
+    
+    const result= await write(`${__dirname}/test.txt`,states);
+    console.log('Hello');
+ }
+ catch(error){
+    console.log(error);
+ }
+}
+fileOpertaion()
+
+
+
+
+
+const{addition,sub,multiply,div}=require('./app');
+// const n1=parseInt(process.argv[2]);
+// const n2=parseInt(process.argv[3]);
+// let oper=process.argv[4];
+// switch(oper){
+//     case '+':
+//         addition(n1,n2);
+//         break;
+//     case '-':
+//         sub(n1,n2);
+//         break;   
+//     case '*':
+//         multiply(n1,n2);
+//         break;
+//     case '/':
+//         div(n1,n2);
+//         break;
+// }
+
