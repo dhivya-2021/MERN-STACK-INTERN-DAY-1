@@ -1,0 +1,48 @@
+const user_data=[
+{
+    id:1,
+    name :'ram',
+    age:20,
+    email:"ram@gmail.com"
+},
+{
+    id:9,
+    name :'aksh',
+    age:19,
+    email:"aksh@gmail.com"
+}
+];
+//CRUD 
+
+    // add a new user in user_data
+export const add_user= (new_user)=>{
+    user_data.push(new_user);
+    }
+   // console.log(add_user);
+
+export const editUser=(id,key,value)=>{
+    // edit
+    const user_index=user_data.findIndex((obj)=> obj.id === id);
+    if(user_index != -1){
+        user_data[user_index][key]=value;
+    }
+}
+//console.log(user_index);
+
+ export const editMultipleParameInUser = (id,updateValue)=>{
+    const user_index=user_data.findIndex((user)=>user.id==id);
+    if(user_index !=-1){
+        user_data[user_index]={
+            ...user_data[user_index],
+            ...updateValue
+        }
+    }
+}
+
+export const deleteUser=(id)=>{
+const upd_obj=user_data.findIndex((obj)=>obj.id===id);
+if(upd_obj != -1 ){
+    user_data.splice(upd_obj,1);
+}
+ }
+  export default user_data;
