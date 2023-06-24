@@ -1,0 +1,77 @@
+import useri,{add_user as addd,editUser as edit ,editMultipleParameInUser,deleteUser as del}from './userModules.js';
+as is used only inside the curly brackets.
+addd({
+    id:67,
+    name:'nandha',
+    age:25,
+    email:'daef@gmail.com'
+});
+del(1);
+editMultipleParameInUser(67,{age:26,name:'nanda'});
+edit(67,'name','hello');
+console.log(useri);
+
+
+//DOM- Document Object Model // Changes the HTML->Tree structred
+
+document.body.innerText='Hello'; //prints hello
+document.body.innerHTML='<div>Hello Buddies!</div>'; //prints with the tags..to avoid we use innerHTML
+document.body.style.backgroundColor='grey';
+console.log(document.body);
+
+console.log(document.body.children);
+const allchild=document.body.children;
+allchild[1].style.color="green"; // allchild[1]makes the second hello buddies to green
+allchild[2].style.color="green";   //allchild[2]makes the third hello buddies to green
+
+ setTimeout(()=> {
+allchild[0].style.color="red";
+allchild[0].innerText="RED";
+},3000);
+ setTimeout(()=> {
+
+
+ allchild[1].style.color="blue";
+ allchild[1].innerText="BLUE";
+ },6000);
+setTimeout(()=> {
+allchild[2].style.color="yellow";
+allchild[2].innerText="YELLOW";
+},9000);
+
+ //to change the color of the string and print it repeatedly
+ const allChild = document.body.children;
+ let refresh_value=true;
+
+setInterval(()=>{
+allChild[0].style.color=(refresh_value ?"RED":"YELLOW");
+refresh_value=!refresh_value;
+},1000);
+ setTimeout(()=>allchild[0].innerText="RED",3000)
+ setTimeout(()=>allchild[1].innerText="GREEN",6000)
+ setTimeout(()=>allchild[2].innerText="ORANGE",9000)
+
+
+
+const tag=document.getElementsByClassName("hi")
+tag[0].innerText="aksh"
+console.log(tag)
+
+const id=document.getElementById("id")
+id.innerText=" unique"
+console.log(id)
+
+
+ const button=document.getElementById("button");
+ const user=document.getElementById("user");
+ const pass=document.getElementById("pass");
+ const form=document.getElementById("login");
+
+  button.addEventListener('click',(event)=>{
+     console.log(event);
+  })
+
+  form.addEventListener("submit",(event)=>{
+  event.preventDefault();
+ console.log("submit",user.value,pass.value);
+ })
